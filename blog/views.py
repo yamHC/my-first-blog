@@ -1,6 +1,7 @@
 from django.shortcuts import render
-
-# Aca importamos render, que es una funcion que nos permite renderizar una plantilla HTML
+from django.utils import timezone
+from .models import Post
 
 def post_list(request):
-    return render(request, 'blog/post_list.html', {})  # Aca llamamos a la plantilla post_list.html
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/post_list.html', {'posts': posts})

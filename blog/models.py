@@ -4,7 +4,7 @@ from django.utils import timezone
 
 # Aca creamos todos los modelos(tablas) de la BD
 
-class Post(models.Model):
+class Post(models.Model): # Aca creamos la clase Post, que es el modelo de la tabla Post
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
